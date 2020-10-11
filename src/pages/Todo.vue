@@ -68,7 +68,7 @@ export default {
     };
   },
   mounted() {
-    this.tasks = LocalStorage.getItem("allTasks");
+    if (!LocalStorage.isEmpty()) this.tasks = LocalStorage.getItem("allTasks");
   },
   methods: {
     addTask() {
@@ -86,7 +86,7 @@ export default {
         })
         .onOk(() => {
           this.tasks.splice(index, 1);
-          LocalStorage.remove(index);
+          LocalStorage.set("allTasks", this.tasks);
           this.$q.notify("Task deleted!");
         });
     }
