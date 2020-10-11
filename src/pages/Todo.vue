@@ -58,32 +58,22 @@
 </template>
 
 <script>
+import { LocalStorage } from "quasar";
+
 export default {
   data() {
     return {
       newTask: "",
-      tasks: [
-        /*{
-        title: 'get',
-        done: false
-
-      },
-      {
-        title: 'set',
-        done: false
-        
-      },
-      {
-        title: 'fet',
-        done: false
-        
-      }*/
-      ]
+      tasks: []
     };
+  },
+  mounted() {
+    this.tasks = LocalStorage.getItem("allTasks");
   },
   methods: {
     addTask() {
       this.tasks.push({ title: this.newTask, done: false });
+      LocalStorage.set("allTasks", this.tasks);
       this.$q.notify("Task saved!");
     },
     deleteTask(index) {
@@ -96,6 +86,7 @@ export default {
         })
         .onOk(() => {
           this.tasks.splice(index, 1);
+          LocalStorage.remove(index);
           this.$q.notify("Task deleted!");
         });
     }
