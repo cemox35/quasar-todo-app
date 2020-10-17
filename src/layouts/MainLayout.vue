@@ -16,7 +16,10 @@
         <div class="text-subtitle1">{{ todaysDate }}</div>
       </div>
 
-      <q-img src="..\statics\mountains.jpg" class="header-image absolute-top" />
+      <q-img
+        src="https://res.cloudinary.com/cemox35/image/upload/f_auto,q_auto/v1602936028/mountains_mxxugr.jpg"
+        class="header-image absolute-top"
+      />
     </q-header>
 
     <q-drawer
@@ -39,6 +42,16 @@
             </q-item-section>
           </q-item>
 
+          <q-item to="/profile" exact clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="perm_identity" />
+            </q-item-section>
+
+            <q-item-section>
+              Profile
+            </q-item-section>
+          </q-item>
+
           <q-item to="/help" exact clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="help" />
@@ -53,12 +66,14 @@
 
       <q-img
         class="absolute-top"
-        src="../statics/mountains.jpg"
+        src="https://res.cloudinary.com/cemox35/image/upload/f_auto,q_auto/v1602936028/mountains_mxxugr.jpg"
         style="height: 192px"
       >
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            <img
+              src="https://res.cloudinary.com/cemox35/image/upload/f_auto,q_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602935368/boy-avatar_nflprv.png"
+            />
           </q-avatar>
           <div class="text-weight-bold">Cem Ayar</div>
           <div>@cemayar9</div>
