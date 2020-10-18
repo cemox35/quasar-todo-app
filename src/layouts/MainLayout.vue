@@ -71,12 +71,10 @@
       >
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img
-              src="https://res.cloudinary.com/cemox35/image/upload/f_auto,q_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602935368/boy-avatar_nflprv.png"
-            />
+            <img :src="profile.avatar" />
           </q-avatar>
-          <div class="text-weight-bold">Cem Ayar</div>
-          <div>@cemayar9</div>
+          <div class="text-weight-bold">{{ profile.name }}</div>
+          <div>{{ profile.nickname }}</div>
         </div>
       </q-img>
     </q-drawer>
@@ -89,14 +87,27 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue";
-import { date } from "quasar";
+import { date, LocalStorage } from "quasar";
 
 export default {
   name: "MainLayout",
   data() {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      profile: {
+        name: "",
+        nickname: "",
+        gender: "",
+        avatar: ""
+      }
     };
+  },
+  mounted() {
+    if (LocalStorage.getItem("profile")) {
+      this.profile = LocalStorage.getItem("profile");
+    } else {
+      this.$router.push("/register");
+    }
   },
   computed: {
     todaysDate() {

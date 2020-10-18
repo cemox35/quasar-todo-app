@@ -19,12 +19,15 @@
     </q-parallax>
 
     <div class="bg-light">
-      <q-form class="column items-center q-pa-xl q-gutter-md">
+      <q-form
+        class="column items-center q-pa-xl q-gutter-md"
+        @submit="onSubmit"
+      >
         <label>Name & Surname</label>
         <q-input
           filled
           v-model="name"
-          label="Your name *"
+          label="Enter Your Name"
           lazy-rules
           :rules="[val => (val && val.length > 0) || 'Please type something']"
         />
@@ -32,13 +35,13 @@
         <q-input
           filled
           v-model="nickname"
-          label="Your nickname *"
+          label="Enter Your Nickname"
           lazy-rules
           :rules="[val => (val && val.length > 0) || 'Please type something']"
         />
         <label>Gender</label>
         <q-btn-toggle
-          v-model="model"
+          v-model="gender"
           class="my-custom-toggle"
           no-caps
           rounded
@@ -47,8 +50,8 @@
           color="white"
           text-color="black"
           :options="[
-            { label: 'Male', value: 'one' },
-            { label: 'Female', value: 'two' }
+            { label: 'Male', value: 'Male' },
+            { label: 'Female', value: 'Female' }
           ]"
         />
         <q-btn
@@ -56,7 +59,7 @@
           color="black"
           text-color="white"
           unelevated
-          to="/"
+          type="submit"
           label="Register"
           no-caps
         />
@@ -66,11 +69,47 @@
 </template>
 
 <script>
+import { LocalStorage } from "quasar";
+
 export default {
   data() {
     return {
-      model: "one"
+      name: "",
+      nickname: "",
+      gender: "Male",
+      avatar: ""
     };
+  },
+
+  mounted() {
+    if (LocalStorage.getItem("profile")) {
+      this.$router.push("/");
+    }
+  },
+
+  methods: {
+    onSubmit() {
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        icon: "cloud_done",
+        message: "Register Successfully!"
+      });
+
+      const profile = {
+        name: this.name,
+        nickname: this.nickname,
+        gender: this.gender,
+        avatar:
+          this.gender == "Male"
+            ? "https://res.cloudinary.com/cemox35/image/upload/f_auto,g_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602936638/oeqrw528z5xro20y4cpe.png"
+            : "https://res.cloudinary.com/cemox35/image/upload/f_auto,g_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602936596/pxr6l9hwanibfehlsmfj.png"
+      };
+      console.debug(profile);
+
+      LocalStorage.set("profile", profile);
+      this.$router.push("/");
+    }
   }
 };
 </script>

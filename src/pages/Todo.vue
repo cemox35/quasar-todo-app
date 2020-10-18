@@ -68,7 +68,7 @@ export default {
     };
   },
   mounted() {
-    if (!LocalStorage.isEmpty()) this.tasks = LocalStorage.getItem("allTasks");
+    this.tasks = LocalStorage.getItem("allTasks") || [];
   },
   methods: {
     addTask() {

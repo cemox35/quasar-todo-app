@@ -1,3 +1,4 @@
+import { LocalStorage } from 'quasar'
 
 const routes = [
   {
@@ -15,7 +16,7 @@ const routes = [
     path: '/register',
     component: () => import('layouts/HeaderFooter.vue'),
     children: [
-     {path: '',component: () => import('pages/Register.vue') }
+     { path: '',component: () => import('pages/Register.vue') }
     ]
     
   },

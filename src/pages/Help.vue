@@ -1,6 +1,7 @@
 <template>
   <div class="q-pa-md" style="max-width: 350px">
-    <q-list bordered separator>
+    Help Page
+    <!--  <q-list bordered separator>
       <q-slide-item @left="onLeft" @right="onRight">
         <template v-slot:left>
           <q-icon name="done" />
@@ -59,7 +60,7 @@
         color="red-7"
         icon="favorite_border"
       />
-    </div>
+    </div>-->
   </div>
 </template>
 
