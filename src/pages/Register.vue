@@ -105,7 +105,6 @@ export default {
             ? "https://res.cloudinary.com/cemox35/image/upload/f_auto,g_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602936638/oeqrw528z5xro20y4cpe.png"
             : "https://res.cloudinary.com/cemox35/image/upload/f_auto,g_auto,w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1602936596/pxr6l9hwanibfehlsmfj.png"
       };
-      console.debug(profile);
 
       LocalStorage.set("profile", profile);
       this.$router.push("/");
