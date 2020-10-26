@@ -11,6 +11,7 @@
           { name: 'tags', value: 'browser_upload' },
           { name: 'folder', value: 'UserPPUpload' }
         ]"
+        auto-upload
         field-name="file"
         style="max-width: 300px"
         label="Upload your avatar"
@@ -76,7 +77,7 @@ export default {
         color: "green-4",
         textColor: "white",
         icon: "cloud_done",
-        message: "Register Successfully!"
+        message: "Editing Successfully!"
       });
 
       const profile = {
